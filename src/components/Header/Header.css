@@ -1,0 +1,104 @@
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #0a0a0c;
+    border-bottom: 1px solid #008b94;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header__container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.header__logo {
+    width: auto;
+    height: 60px;
+}
+
+.header__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Навигация */
+.header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.header__ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.header__item {
+    display: flex;
+    align-items: center;
+}
+
+/* Ссылки меню */
+.headerNav__item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: #888899;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+    position: relative;
+}
+
+.headerNav__item:hover {
+    color: #00f0ff;
+    text-shadow: 0 0 8px #00f0ff;
+}
+
+/* Подчеркивание при наведении */
+.headerNav__item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00f0ff;
+    transition: width 0.3s ease;
+}
+
+.headerNav__item:hover::after {
+    width: 100%;
+}
+@media (max-width: 768px) {
+    .header {
+        height: 70px;
+    }
+    
+    .header__logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .header__ul {
+        gap: 20px;
+    }
+    
+    .headerNav__item {
+        font-size: 12px;
+    }
+}
