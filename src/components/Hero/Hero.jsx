@@ -18,14 +18,14 @@ const Hero = ({})=>{
                             <ul className="hero_download__ul">
                                 <li className="hero_ws_item">
                                     <a href="#" className="hero__download-btn">
-                                        {/* <span className="btn-icon"><img src= {githubIco} alt="githubIco" /></span>
-                                        <span className="btn-text">Скачать с GitHub</span> */}
+                                        <span className="btn-icon"><img src= {githubIco} alt="githubIco" /></span>
+                                        <span className="btn-text">Скачать с GitHub</span>
                                     </a>
                                 </li>
                                 <li className="hero_ws_item">
                                     <a href="#" className="hero__download-btn">
-                                        {/* <span className="btn-icon"><img src={downloadIco} alt="downloadIco" /></span>
-                                        <span className="btn-text">Скачать с Сайта</span> */}
+                                        <span className="btn-icon"><img src={downloadIco} alt="downloadIco" /></span>
+                                        <span className="btn-text">Скачать с Сайта</span>
                                     </a>
                                 </li>
                             </ul>
@@ -36,29 +36,7 @@ const Hero = ({})=>{
                         <img className="hero__image" src="#" alt="System Requirements" />
                     </div>
             </div>
-        </section>
-        
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        </section>  
         </>
     )
 }
