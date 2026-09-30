@@ -10,7 +10,7 @@ const Hero = ({})=>{
             <div className="hero__container">
                     <div className="hero__wrong__side"> 
                        <div className="hero__title"><h1>Amadeus</h1></div> 
-                       <div className="hero__description"><p>Амадеус - голосовой асистент и так далее потом напишу текст мне сейчас лень и ещё какие то там слова ну наверное этого уже достаточно?</p></div>
+                       <div className="hero__description"><p>Амадеус - голосовой асистент который способен использовать разные модели ии как локальные так и облачные вы сами можете в зависмости от своих ожиданий от асистента выбрать модель на свой вкус </p></div>
                         <div className="hero__github">  
                             <div className="hero__subtitle"><h2>Можно скачать с Github или прямо на сайте</h2></div>
                         </div>

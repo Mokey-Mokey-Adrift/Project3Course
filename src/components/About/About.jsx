@@ -1,68 +1,80 @@
 import "./About.css"
+import {get_all_vote_functions} from "../../api/votes"
+import VoteItem from "../VoteItem/VoteItem"
 
+import { useState,useEffect } from "react"
 const About = () => {
+
+    const [votes, setVotes] = useState([])
+    const[loading,setLoading] = useState(true)
+
+    useEffect(() =>{
+        const fetchVotes = async () =>{
+            try{
+                const data = await get_all_vote_functions()
+                setVotes(data)
+            }catch(error){
+                console.log("Ошибка зарузки ",error)
+            }
+            finally{
+                setLoading(false)
+            }
+        }
+        fetchVotes()
+    },[])
+
+    const handleVote = (id)=>{
+        setVotes(votes.map(vote =>{
+            if(vote.id === id ){
+                return {...vote,count:vote.count + 1}
+            }
+            return vote
+        }))
+    }
+
+
+
     return (
         <section className="about">
             <div className="about__container">
                 <div className="about__left">
                     <h2 className="about__title">О проекте</h2>
                     <p className="about__description">
-                        Amadeus — это локальный голосовой ассистент с открытым исходным кодом, 
-                        разработанный с упором на приватность и независимость от облачных сервисов. 
-                        Проект вдохновлен концепцией искусственного интеллекта из визуальной новеллы 
-                        Steins;Gate 0, где технология Amadeus позволяла сохранять сознание и память 
-                        человека в цифровом формате.
+                        Amadeus — это голосовой ассистент с открытым исходным кодом, 
+                        разработанный в первую очередь для управления вашей ОС голосовыми командами. 
                         <br/><br/>
-                        Наш агент работает полностью на вашем устройстве, не отправляя данные 
-                        на внешние серверы. Архитектура системы модульная: вы можете подключать 
-                        различные расширения для обработки речи, анализа текста, управления умным 
-                        домом и многое другое.
+                        В лаунчере вы можете скачать локальную модель в зависимости от мощности вашего устройства 
                         <br/><br/>
-                        Разработка ведется силами сообщества. Каждая новая функция появляется 
-                        только после того, как пользователи проголосуют за её приоритет. 
-                        Мы верим, что инструменты будущего должны создаваться теми, кто ими пользуется.
+                        Или же вы можете подключить облачную модель по API ключу получить его не сложно а всё остальнео мы подключим сами
                         <br/><br/>
-                        Проект находится в стадии активной разработки. Текущая версия включает 
-                        базовое распознавание речи, синтез голоса и простую систему команд. 
-                        В планах — интеграция с локальными LLM, поддержка множественных языков 
-                        и создание экосистемы плагинов от сторонних разработчиков.
+                        Все кто хотят поучаствовать в проекте могут добавить свои функции сами и скорее всего они появятся в новых версиях 
+                        но даже если вы не желаете заниматься разработкой вы можете зарегестрироваться и принять участие в голосовании за функции в новой версии 
+                        <br/><br/>
+                        Текущая версия: 0.3 эээээ ну это еле живой и кривой чат но мы (Я и ии) рабоатем над тем чтобы сделать это хоть чем то полезным
                     </p>
                 </div>
 
                 <div className="about__right">
+                    
                     <h3 className="about__vote-title">Голосование за функции</h3>
                     <p className="about__vote-subtitle">Выберите, что добавить в следующей версии</p>
+
+                        {loading ? (<p className="about__loading">Загрузка...</p>) :
+                        (
+                            <ul className="about__vote-list">
+                                {votes.map(vote =>(
+                                    <VoteItem
+                                    key = {vote.id}
+                                    name={vote.name}
+                                    count={vote.count}
+                                    onVote={()=>handleVote(vote.id)}
+                                    />
+                                ))}
+                            </ul>
+                        )
+                        }
+
                     
-                    <ul className="about__vote-list">
-                        <li className="about__vote-item">
-                            <div className="vote-info">
-                                <span className="vote-name">Вариант 1</span>
-                                <span className="vote-count">142 голоса</span>
-                            </div>
-                            <button className="vote-btn">Голосовать</button>
-                        </li>
-                        <li className="about__vote-item">
-                            <div className="vote-info">
-                                <span className="vote-name">Вариант 2</span>
-                                <span className="vote-count">89 голосов</span>
-                            </div>
-                            <button className="vote-btn">Голосовать</button>
-                        </li>
-                        <li className="about__vote-item">
-                            <div className="vote-info">
-                                <span className="vote-name">Вариант 3</span>
-                                <span className="vote-count">203 голоса</span>
-                            </div>
-                            <button className="vote-btn">Голосовать</button>
-                        </li>
-                        <li className="about__vote-item">
-                            <div className="vote-info">
-                                <span className="vote-name">Вариант 4</span>
-                                <span className="vote-count">67 голосов</span>
-                            </div>
-                            <button className="vote-btn">Голосовать</button>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
