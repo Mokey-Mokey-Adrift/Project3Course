@@ -10,7 +10,7 @@ const Hero = ({})=>{
             <div className="hero__container">
                     <div className="hero__wrong__side"> 
                        <div className="hero__title"><h1>Amadeus</h1></div> 
-                       <div className="hero__description"><p>Амадеус - голосовой асистент который способен использовать разные модели ии как локальные так и облачные вы сами можете в зависмости от своих ожиданий от асистента выбрать модель на свой вкус </p></div>
+                       <div className="hero__description"><p>Амадеус - голосовой асистент который способен использовать разные модели ии как локальные так и облачные вы сами можете выбрать модель нейросети на свой вкус </p></div>
                         <div className="hero__github">  
                             <div className="hero__subtitle"><h2>Можно скачать с Github или прямо на сайте</h2></div>
                         </div>
@@ -33,7 +33,7 @@ const Hero = ({})=>{
                     </div>
                     
                     <div className="hero__right__side">
-                        <img className="hero__image" src="#" alt="System Requirements" />
+                        <img className="hero__image" src="#" alt="Ui Screenshot" />
                     </div>
             </div>
         </section>  
